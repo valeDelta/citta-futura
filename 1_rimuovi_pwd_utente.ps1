@@ -7,6 +7,10 @@ New-ItemProperty -Path "HKLM:\HKEY_L:\Control PaOCAL_MACHINE\SOFTWARE\Microsoft\
 If ((Get-NetConnectionProfile).IPv4Connectivity -contains "Internet" -or (Get-NetConnectionProfile).IPv6Connectivity -contains "Internet") {
     mkdir "C:\temp\" | Set-Location 
     Invoke-WebRequest 'https://raw.githubusercontent.com/valeDelta/citta-futura/refs/heads/main/4_config.ps1' -OutFile 'C:\temp\config.ps1'
+    Invoke-WebRequest 'https://raw.githubusercontent.com/valeDelta/citta-futura/refs/heads/main/office.xml' -OutFile 'C:\temp\office.xml'
+    Invoke-WebRequest 'https://github.com/valeDelta/citta-futura/raw/refs/heads/main/setup.exe' -OutFile 'C:\temp\setup.exe'
+    
+    
     
     $LangList = Get-WinUserLanguageList
     if($LangList.languagetag -ccontains "nl-NL"){
