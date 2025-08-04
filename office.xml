@@ -1,0 +1,12 @@
+<Configuration>
+  <Add SourcePath="\\Server\Share" OfficeClientEdition="64" Channel="PerpetualVL2019">
+      <Product ID="ProPlus2019Volume"  PIDKEY="XCM2X-8NRGX-MKJ3B-BXRCH-R9D3M" >
+         <Language ID="en-us" />
+      </Product>
+      <Product ID="ProofingTools">
+        <Language ID="it-it" />
+      </Product>
+  </Add>
+  <RemoveMSI />
+  <Display Level="None" AcceptEULA="TRUE" />  
+</Configuration>
