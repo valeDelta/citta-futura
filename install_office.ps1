@@ -8,9 +8,7 @@ Che office va installato?:
 Switch ($client)
 {
     "1"  { 
-        Invoke-WebRequest 'https://redirector.eset.systems/li-handler/?uuid=epi_win-dea2c64c-ca8b-4bf6-9449-cda56cb83add' -OutFile "C:\temp\eset.exe"
-        Set-Location "C:\temp\"
-        eset.exe
+        
      }
     "2"{ 
        #install office
