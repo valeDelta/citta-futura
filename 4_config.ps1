@@ -28,13 +28,8 @@ Get-AppPackage -AllUsers "Microsoft.OutlookForWindows" | Remove-AppPackage -AllU
 Set-Location "C:\Program Files\McAfee\WebAdvisor"
 .\uninstaller.exe /s
 Set-Location "C:\Program Files\McAfee"
-Set-Location "C:\Program Files\McAfee\wps\1.31.148.1"
+Set-Location "C:\Program Files\McAfee\wps\1.*"
 .\mc-update.exe -uninstall -silent -force
-
-#install office
-Set-Location "C:\temp\"
-.\setup.exe /dowload "C:\temp\office.xml"
-.\setup.exe /configure "C:\temp\office.xml"
 
 $PC = Read-Host "
 Inserire il nuovo nominativo per il computer
@@ -50,7 +45,7 @@ if ((Get-NetConnectionProfile).IPv4Connectivity -contains "Internet" -or (Get-Ne
     Invoke-WebRequest 'https://logins.livecare.net/liveletexecustomunified/GSTTQX6918RZR83K' -OutFile "$PD\teleassistenza.exe"
 }
 
- Switch ($client)
+Switch ($client)
 {
     "1"  { 
         Invoke-WebRequest 'https://redirector.eset.systems/li-handler/?uuid=epi_win-dea2c64c-ca8b-4bf6-9449-cda56cb83add' -OutFile "C:\temp\eset.exe"
@@ -67,17 +62,26 @@ if ((Get-NetConnectionProfile).IPv4Connectivity -contains "Internet" -or (Get-Ne
      }
 }
 
+if (Get-ChildItem -Path "C:\temp" -Filter "config.ps1") { 
+    # creo le azioni da eseguire
+    Set-ExecutionPolicy Unrestricted -Scope LocalMachine
+    $action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument "C:\temp\key.ps1 -WindowStyle Maximized"
+    #creo il trigger e impostazioni per l'attività
+    $trigger = New-ScheduledTaskTrigger -AtLogOn
+    $task = New-ScheduledTaskPrincipal -RunLevel Highest -UserId Saidea
+
+    # registro le attività
+    Register-ScheduledTask -Action $action -Trigger $trigger -Principal $task -TaskName "windowskey"
+
+} 
+else { 
+    exit
+}
+
 Rename-Computer -NewName $PC
 
-$key = Read-Host "
-Inserire la nuova key di windows"
-try {
-    changepk.exe /ProductKey $key
-}
-catch {
-    changepk.exe /ProductKey NWHDX-K9VRX-KRHRM-VMTK2-8XDMX
-    changepk.exe /ProductKey $key
-}
+changepk.exe /ProductKey NWHDX-K9VRX-KRHRM-VMTK2-8XDMX
+
 
 
 pause
