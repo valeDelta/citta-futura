@@ -62,9 +62,9 @@ Switch ($client)
      }
 }
 
-Invoke-WebRequest 'https://raw.githubusercontent.com/valeDelta/citta-futura/refs/heads/main/install_office.ps1' -OutFile "C:\temp\install_office.ps1"
+Invoke-WebRequest 'https://raw.githubusercontent.com/valeDelta/citta-futura/refs/heads/main/install_office.ps1' -OutFile "C:\users\saidea\install_office.ps1"
 
-Invoke-WebRequest 'https://raw.githubusercontent.com/valeDelta/citta-futura/refs/heads/main/key.ps1' -OutFile "C:\temp\key.ps1"
+Invoke-WebRequest 'https://raw.githubusercontent.com/valeDelta/citta-futura/refs/heads/main/key.ps1' -OutFile "C:\users\saidea\key.ps1"
 
 if (Get-ChildItem -Path "C:\temp" -Filter "key.ps1") { 
     # creo le azioni da eseguire
