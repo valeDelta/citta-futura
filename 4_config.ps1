@@ -62,7 +62,11 @@ Switch ($client)
      }
 }
 
-if (Get-ChildItem -Path "C:\temp" -Filter "config.ps1") { 
+Invoke-WebRequest 'https://raw.githubusercontent.com/valeDelta/citta-futura/refs/heads/main/install_office.ps1' -OutFile "C:\temp\install_office.ps1"
+
+Invoke-WebRequest 'https://raw.githubusercontent.com/valeDelta/citta-futura/refs/heads/main/key.ps1' -OutFile "C:\temp\key.ps1"
+
+if (Get-ChildItem -Path "C:\temp" -Filter "key.ps1") { 
     # creo le azioni da eseguire
     Set-ExecutionPolicy Unrestricted -Scope LocalMachine
     $action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument "C:\temp\key.ps1 -WindowStyle Maximized"
@@ -81,8 +85,6 @@ else {
 Rename-Computer -NewName $PC
 
 changepk.exe /ProductKey NWHDX-K9VRX-KRHRM-VMTK2-8XDMX
-
-
 
 pause
 
