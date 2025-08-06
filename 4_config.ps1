@@ -43,6 +43,11 @@ Computer da:
 "
 if ((Get-NetConnectionProfile).IPv4Connectivity -contains "Internet" -or (Get-NetConnectionProfile).IPv6Connectivity -contains "Internet") { 
     Invoke-WebRequest 'https://logins.livecare.net/liveletexecustomunified/GSTTQX6918RZR83K' -OutFile "$PD\teleassistenza.exe"
+    Invoke-WebRequest 'https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7BB50F99AD-014E-8BFA-BF04-F9AC19D69D4A%7D%26lang%3Dit%26browser%3D4%26usagestats%3D1%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26ap%3Dx64-statsdef_1%26brand%3DFKPE%26installdataindex%3Dempty/update2/installers/ChromeSetup.exe' -OutFile "C:\temp\chrome.exe"
+    Invoke-WebRequest 'https://www.foxit.com/downloads/latest.html?product=Foxit-Reader&platform=Windows&version=&package_type=&language=Italian&distID=' -OutFile "C:\temp\foxit.exe"
+    Set-Location "C:\temp\"
+    .\chrome.exe
+    .\foxit.exe
 }
 
 Switch ($client)
@@ -50,7 +55,7 @@ Switch ($client)
     "1"  { 
         Invoke-WebRequest 'https://redirector.eset.systems/li-handler/?uuid=epi_win-dea2c64c-ca8b-4bf6-9449-cda56cb83add' -OutFile "C:\temp\eset.exe"
         Set-Location "C:\temp\"
-        .\eset.exe -wait
+        .\eset.exe -waitv
      }
     "2"{ 
        Invoke-WebRequest 'https://redirector.eset.systems/li-handler/?uuid=epi_win-b208bcc5-97da-424f-b62f-ee836e00c809' -OutFile "C:\temp\eset.exe"
