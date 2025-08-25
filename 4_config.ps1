@@ -67,14 +67,14 @@ Switch ($client)
      }
 }
 
-Invoke-WebRequest 'https://raw.githubusercontent.com/valeDelta/citta-futura/refs/heads/main/install_office.ps1' -OutFile "C:\users\saidea\destop\install_office.ps1"
+Invoke-WebRequest 'https://raw.githubusercontent.com/valeDelta/citta-futura/refs/heads/main/install_office.ps1' -OutFile "C:\users\saidea\desktop\install_office.ps1"
 
 Invoke-WebRequest 'https://raw.githubusercontent.com/valeDelta/citta-futura/refs/heads/main/key.ps1' -OutFile "C:\users\saidea\desktop\key.ps1"
 
-if (Get-ChildItem -Path "C:\temp" -Filter "key.ps1") { 
+if (Get-ChildItem -Path "C:\users\saidea\desktop" -Filter "key.ps1") { 
     # creo le azioni da eseguire
     Set-ExecutionPolicy Unrestricted -Scope LocalMachine
-    $action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument "C:\temp\key.ps1 -WindowStyle Maximized"
+    $action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument "C:\users\saidea\desktop\key.ps1 -WindowStyle Maximized"
     #creo il trigger e impostazioni per l'attività
     $trigger = New-ScheduledTaskTrigger -AtLogOn
     $task = New-ScheduledTaskPrincipal -RunLevel Highest -UserId Saidea
@@ -84,7 +84,7 @@ if (Get-ChildItem -Path "C:\temp" -Filter "key.ps1") {
 
 } 
 else { 
-    exit
+    continue
 }
 
 Rename-Computer -NewName $PC
