@@ -89,8 +89,10 @@ else {
 
 Rename-Computer -NewName $PC
 
-changepk.exe /ProductKey NWHDX-K9VRX-KRHRM-VMTK2-8XDMX
+
 
 pause
+
+changepk.exe /ProductKey NWHDX-K9VRX-KRHRM-VMTK2-8XDMX
 
 # Remove-Item -Path C:\temp\config.ps1 -Recurse
