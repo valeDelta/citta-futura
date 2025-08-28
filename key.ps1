@@ -2,4 +2,4 @@ Unregister-ScheduledTask -TaskName "windowskey" -Confirm:$False
 $key = Read-Host "
 Inserire la nuova key di windows"
 changepk.exe /ProductKey $key
-shutdown -r -t 0
+shutdown -r -t 30
