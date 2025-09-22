@@ -1,5 +1,7 @@
 Unregister-ScheduledTask -TaskName "continue" -Confirm:$False
 
+Set-LocalUser -Name "Saidea" -PasswordNeverExpires $true
+
 $PD = "C:\Users\Public\Desktop"
 
 #non funziona se non sul desktop
